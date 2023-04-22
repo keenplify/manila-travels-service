@@ -8,7 +8,7 @@ export class BaseResource {
   protected type: 'item' | 'collection' | 'pagination'
   protected extra: any = {}
 
-  constructor(resource?: ModelObject, type?: 'item' | 'collection' | 'pagination') {
+  constructor (resource?: ModelObject, type?: 'item' | 'collection' | 'pagination') {
     this.resource = resource
 
     if (type) {
@@ -18,7 +18,7 @@ export class BaseResource {
     }
   }
 
-  public additional(data: any) {
+  public additional (data: any) {
     for (const key in data) {
       this.extra[key] = data[key]
     }
@@ -26,15 +26,15 @@ export class BaseResource {
     return this
   }
 
-  public isPaginated() {
+  public isPaginated () {
     return this.type === 'pagination'
   }
 
-  public getAdditional() {
+  public getAdditional () {
     return this.extra
   }
 
-  public hasAdditional() {
+  public hasAdditional () {
     return Object.keys(this.extra).length > 0
   }
 
@@ -50,11 +50,11 @@ export class BaseResource {
     return new this(resources, 'pagination')
   }
 
-  public toObject(_model: ModelObject): ModelObject {
+  public toObject (_model: ModelObject): ModelObject {
     throw new Error('Method is not implemented')
   }
 
-  public toJSON(): ModelObject | ModelObject[] | null | undefined {
+  public toJSON (): ModelObject | ModelObject[] | null | undefined {
     if (this.resource) {
       if (this.resource instanceof MissingValue) {
         return this.resource.toJSON()

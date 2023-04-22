@@ -1,4 +1,3 @@
-import { DateTime } from 'luxon'
 import {
   afterDelete,
   afterSave,
@@ -10,19 +9,13 @@ import {
 import Event from '@ioc:Adonis/Core/Event'
 
 export default class Model extends BaseModel {
-  constructor(data?: any) {
+  constructor (data?: any) {
     super()
     this.merge(data)
   }
 
   @column({ isPrimary: true })
   public id: number
-
-  @column.dateTime({ autoCreate: true })
-  public createdAt: DateTime
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  public updatedAt: DateTime
 
   public static make<T extends LucidModel>(
     this: T,
@@ -39,12 +32,12 @@ export default class Model extends BaseModel {
   }
 
   @afterSave()
-  public static fireAfterSaveEvent(model: Model) {
+  public static fireAfterSaveEvent (model: Model) {
     Event.emit('model:saved', model)
   }
 
   @afterDelete()
-  public static fireAfterDeleteEvent(model: Model) {
+  public static fireAfterDeleteEvent (model: Model) {
     Event.emit('model:deleted', model)
   }
 }

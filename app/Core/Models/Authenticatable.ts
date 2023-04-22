@@ -7,7 +7,7 @@ export default class Authenticatable extends Model {
   public password: string
 
   @beforeSave()
-  public static async hashPassword(model: any) {
+  public static async hashPassword (model: any) {
     if (model.$dirty.password) {
       model.password = await Hash.make(model.password)
     }
