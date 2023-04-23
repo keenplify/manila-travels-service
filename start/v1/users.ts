@@ -12,6 +12,8 @@ Route.group(() => {
   })
     .prefix('auth')
     .as('auth')
+
+  Route.resource('routes', 'RoutesController').apiOnly().only(['index', 'show', 'store', 'update', 'destroy'])
 })
   .prefix('v1/users')
   .as('v1.users')
