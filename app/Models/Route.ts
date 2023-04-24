@@ -1,5 +1,6 @@
-import { column } from '@ioc:Adonis/Lucid/Orm'
+import { BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm'
 import Model from 'App/Core/Models/Model'
+import Bus from 'App/Models/Bus'
 import { DateTime } from 'luxon'
 
 export default class Route extends Model {
@@ -8,6 +9,9 @@ export default class Route extends Model {
 
   @column()
   public busNo: string
+
+  @belongsTo(() => Bus, {foreignKey: 'busNo', localKey: 'busNo'})
+  public bus: BelongsTo<typeof Bus>
 
   @column({ columnName: 'route_location'})
   public location: string
@@ -20,7 +24,7 @@ export default class Route extends Model {
     return this.location.split(',')[1].trim()
   }
 
-  @column({ columnName: 'route_dep_date'})
+  @column.date({ columnName: 'route_dep_date'})
   public departureDate: DateTime
 
   @column({ columnName: 'route_dep_time'})

@@ -4,7 +4,7 @@ import { RouteResource } from 'App/Resources/RouteResource'
 
 export default class RoutesControllerController {
   public async index ({ response }: HttpContextContract) {
-    const routes = await Route.query()
+    const routes = await Route.query().preload('bus')
 
     const resource = RouteResource.collection(routes)
 
