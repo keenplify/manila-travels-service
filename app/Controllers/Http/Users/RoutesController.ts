@@ -12,7 +12,7 @@ export default class RoutesControllerController {
   }
 
   public async show ({ params, response }: HttpContextContract) {
-    const route = await Route.query().where('id', params.id).firstOrFail()
+    const route = await Route.query().where('id', params.id).preload('bus').firstOrFail()
 
     const resource = RouteResource.make(route)
 
