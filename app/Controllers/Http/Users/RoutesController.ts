@@ -4,7 +4,7 @@ import { RouteResource } from 'App/Resources/RouteResource'
 
 export default class RoutesControllerController {
   public async index ({ response }: HttpContextContract) {
-    const routes = await Route.query().preload('bus')
+    const routes = await Route.query().preload('bus', busBuilder => busBuilder.preload('seat'))
 
     const resource = RouteResource.collection(routes)
 
@@ -12,7 +12,11 @@ export default class RoutesControllerController {
   }
 
   public async show ({ params, response }: HttpContextContract) {
-    const route = await Route.query().where('id', params.id).preload('bus').firstOrFail()
+    const route = await Route
+      .query()
+      .where('id', params.id)
+      .preload('bus', busBuilder => busBuilder.preload('seat'))
+      .firstOrFail()
 
     const resource = RouteResource.make(route)
 
