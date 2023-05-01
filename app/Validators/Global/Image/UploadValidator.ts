@@ -7,7 +7,7 @@ export default class UploadValidator {
   public schema = schema.create({
     image: schema.file({
       size: '5mb',
-      extnames: ['jpg', 'gif', 'png'],
+      extnames: ['jpg', 'gif', 'png', 'jpeg'],
     }),
   })
 }
