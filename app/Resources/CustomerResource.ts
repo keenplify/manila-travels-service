@@ -13,6 +13,8 @@ export class CustomerResource extends BaseResource {
         phone: model.customerPhone,
         createdAt: model.customerCreated,
       },
+      validIdImageUrl: model.validIdImageUrl,
+      type: model.type,
       bookingId: model.bookingId,
       booking: model.booking ? BookingResource.make(model.booking) : undefined,
     }
