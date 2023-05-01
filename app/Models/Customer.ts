@@ -1,4 +1,5 @@
 import { BelongsTo, HasOne, belongsTo, column, hasOne } from '@ioc:Adonis/Lucid/Orm'
+import { booleanColumn } from 'App/Core/Decorators/Boolean'
 import Model from 'App/Core/Models/Model'
 import { CustomerType } from 'App/Enums/CustomerType'
 import Booking from 'App/Models/Booking'
@@ -26,6 +27,9 @@ export default class Customer extends Model {
 
   @column()
   public validIdImageUrl: string | null
+
+  @booleanColumn()
+  public isVerified: boolean
 
   @hasOne(() => Booking, { foreignKey: 'bookingId', localKey: 'bookingId' })
   public booking: HasOne<typeof Booking>

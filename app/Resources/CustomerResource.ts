@@ -14,6 +14,7 @@ export class CustomerResource extends BaseResource {
         phone: model.customerPhone,
         createdAt: model.customerCreated,
       },
+      isVerified: model.isVerified,
       validIdImageUrl: model.validIdImageUrl,
       type: model.type,
       bookingId: model.bookingId,
