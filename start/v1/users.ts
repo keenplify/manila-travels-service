@@ -13,9 +13,11 @@ Route.group(() => {
     .prefix('auth')
     .as('auth')
 
-  Route.resource('routes', 'RoutesController').apiOnly().only(['index', 'show', 'store', 'update', 'destroy'])
-  Route.resource('buses', 'BusController').apiOnly().only(['index', 'show', 'store', 'update', 'destroy'])
-  Route.resource('customers', 'CustomersController').apiOnly().only(['index', 'show', 'store', 'update', 'destroy'])
+  Route.group(() => {
+    Route.resource('routes', 'RoutesController').apiOnly().only(['index', 'show', 'store', 'update', 'destroy'])
+    Route.resource('buses', 'BusController').apiOnly().only(['index', 'show', 'store', 'update', 'destroy'])
+    Route.resource('customers', 'CustomersController').apiOnly().only(['index', 'show', 'store', 'update', 'destroy'])
+  }).middleware('auth:user')
 })
   .prefix('v1/users')
   .as('v1.users')
