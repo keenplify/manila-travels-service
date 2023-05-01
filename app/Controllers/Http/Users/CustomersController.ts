@@ -4,15 +4,9 @@ import { CustomerResource } from 'App/Resources/CustomerResource'
 import StoreValidator from 'App/Validators/Users/Customers/StoreValidator'
 import UpdateValidator from 'App/Validators/Users/Customers/UpdateValidator'
 
-export default class CustomersControllerController {
-  public async index ({ response, auth }: HttpContextContract) {
-    const user = auth.user
-
+export default class CustomersController {
+  public async index ({ response }: HttpContextContract) {
     const customersQuery = Customer.query()
-
-    if (user) {
-      customersQuery.where('user_id', user.id)
-    }
 
     const customers = await customersQuery
 
@@ -31,12 +25,10 @@ export default class CustomersControllerController {
     return response.resource(resource)
   }
 
-  public async store ({ request, response, auth }: HttpContextContract) {
-    const user = auth.user!
-
+  public async store ({ request, response }: HttpContextContract) {
     const data = await request.validate(StoreValidator)
 
-    const customer = await user.related('customers').create(data)
+    const customer = await Customer.create(data)
 
     const resource = CustomerResource.make(customer)
 

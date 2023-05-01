@@ -7,8 +7,7 @@ export default class StoreValidator {
 
   public schema = schema.create({
     customerName: schema.string(),
-    customerPhone: schema.string(),
+    customerPhone: schema.string.optional(),
     type: schema.enum(CustomerTypes),
-    validIdImageUrl: schema.string.optional(),
   })
 }

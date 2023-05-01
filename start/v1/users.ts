@@ -17,6 +17,7 @@ Route.group(() => {
     Route.resource('routes', 'RoutesController').apiOnly().only(['index', 'show', 'store', 'update', 'destroy'])
     Route.resource('buses', 'BusController').apiOnly().only(['index', 'show', 'store', 'update', 'destroy'])
     Route.resource('customers', 'CustomersController').apiOnly().only(['index', 'show', 'store', 'update', 'destroy'])
+    Route.resource('passengers', 'PassengersController').apiOnly().only(['index', 'show', 'store', 'destroy'])
   }).middleware('auth:user')
 })
   .prefix('v1/users')

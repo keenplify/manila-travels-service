@@ -1,6 +1,6 @@
 import { HasMany, column, hasMany } from '@ioc:Adonis/Lucid/Orm'
 import Authenticatable from 'App/Core/Models/Authenticatable'
-import Customer from 'App/Models/Customer'
+import Passenger from 'App/Models/Passenger'
 
 export default class User extends Authenticatable {
   @column({ isPrimary: true, columnName: 'user_id' })
@@ -15,6 +15,6 @@ export default class User extends Authenticatable {
   @column({ columnName: 'user_password' })
   public password: string
 
-  @hasMany(() => Customer)
-  public customers: HasMany<typeof Customer>
+  @hasMany(() => Passenger)
+  public passengers: HasMany<typeof Passenger>
 }
