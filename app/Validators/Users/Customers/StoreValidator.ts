@@ -9,6 +9,6 @@ export default class StoreValidator {
     customerName: schema.string(),
     customerPhone: schema.string(),
     type: schema.enum(CustomerTypes),
-    validIdImageUrl: schema.string(),
+    validIdImageUrl: schema.string.optional(),
   })
 }
