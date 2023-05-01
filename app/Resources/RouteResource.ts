@@ -14,7 +14,7 @@ export class RouteResource extends BaseResource {
       to: model.to,
       departureDate: model.departureDate,
       departureTime: model.departureTime,
-      stepCost: model.stepCost,
+      stepCost: model.stepCost.value,
       bus: model.bus ? BusResource.make(model.bus) : undefined,
     }
   }

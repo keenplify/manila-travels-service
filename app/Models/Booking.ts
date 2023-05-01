@@ -3,6 +3,8 @@ import Model from 'App/Core/Models/Model'
 import Customer from 'App/Models/Customer'
 import Route from 'App/Models/Route'
 import { DateTime } from 'luxon'
+import { currencyColumn } from 'App/Core/Decorators/Currency'
+import Currency from 'currency.js'
 
 export default class Booking extends Model {
   @column()
@@ -23,8 +25,8 @@ export default class Booking extends Model {
   @column()
   public customerRoute: string
 
-  @column()
-  public bookedAmount: number
+  @currencyColumn()
+  public bookedAmount: Currency
 
   @column()
   public bookedSeat: string

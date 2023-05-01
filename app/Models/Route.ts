@@ -1,6 +1,8 @@
 import { BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm'
+import { currencyColumn } from 'App/Core/Decorators/Currency'
 import Model from 'App/Core/Models/Model'
 import Bus from 'App/Models/Bus'
+import Currency from 'currency.js'
 import { DateTime } from 'luxon'
 
 export default class Route extends Model {
@@ -30,7 +32,7 @@ export default class Route extends Model {
   @column({ columnName: 'route_dep_time'})
   public departureTime: string
 
-  @column({ columnName: 'route_step_cost'})
-  public stepCost: number
+  @currencyColumn({ columnName: 'route_step_cost'})
+  public stepCost: Currency
 }
 
