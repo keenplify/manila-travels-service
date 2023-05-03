@@ -7,7 +7,7 @@ export class RouteResource extends BaseResource {
   public toObject (model: Route): ModelObject {
     return {
       id: model.id,
-      routeId: model.id,
+      routeId: model.routeId,
       busNo: model.busNo,
       location: model.location,
       from: model.from,
