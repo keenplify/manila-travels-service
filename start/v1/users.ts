@@ -14,6 +14,7 @@ Route.group(() => {
     .as('auth')
 
   Route.group(() => {
+    Route.resource('bookings', 'BookingsController').apiOnly().only(['index', 'store', 'destroy'])
     Route.resource('routes', 'RoutesController').apiOnly().only(['index', 'show', 'store', 'update', 'destroy'])
     Route.resource('buses', 'BusController').apiOnly().only(['index', 'show', 'store', 'update', 'destroy'])
     Route.resource('customers', 'CustomersController').apiOnly().only(['index', 'show', 'store', 'update', 'destroy'])

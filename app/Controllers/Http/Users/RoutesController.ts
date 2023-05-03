@@ -1,6 +1,7 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Route from 'App/Models/Route'
 import { RouteResource } from 'App/Resources/RouteResource'
+import StoreValidator from 'App/Validators/Users/Bookings/StoreValidator'
 
 export default class RoutesControllerController {
   public async index ({ response }: HttpContextContract) {
@@ -22,23 +23,6 @@ export default class RoutesControllerController {
 
     return response.resource(resource)
   }
-
-  // public async store({ request, response }: HttpContextContract) {
-  //   // Validate the request body
-  //   const { muscleGroups, ...payload } = await request.validate({
-  //     schema: WorkoutLibraryStoreSchema,
-  //   })
-
-  //   // Create a new workout library from the validated request body
-  //   const library = new WorkoutLibrary()
-  //   library.merge(payload)
-  //   library.muscleGroups = muscleGroups
-  //   await library.save()
-
-  //   const resource = WorkoutResource.make(library)
-
-  //   return response.resource(resource)
-  // }
 
   // public async update({ params, request, response }: HttpContextContract) {
   //   // Retrieve the workout library by id

@@ -12,6 +12,7 @@ export class BookingResource extends BaseResource {
       customerRoute: model.customerRoute,
       bookedAmount: model.bookedAmount.value,
       bookedSeat: model.bookedSeat,
+      referenceNo: model.referenceNo,
     }
   }
 }

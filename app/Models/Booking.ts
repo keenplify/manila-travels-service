@@ -31,6 +31,9 @@ export default class Booking extends Model {
   @column()
   public bookedSeat: string
 
+  @column()
+  public referenceNo: string
+
   @column.dateTime()
   public bookingCreated: DateTime
 }
