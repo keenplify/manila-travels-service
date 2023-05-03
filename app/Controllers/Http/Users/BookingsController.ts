@@ -36,6 +36,7 @@ export default class BookingsController {
     const booking = await Booking.create({
       ...data,
       bookedAmount: currency(bookedAmount),
+      customerId: customer.customerId,
     })
 
     customer.bookingId = booking.bookingId
