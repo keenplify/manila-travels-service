@@ -6,7 +6,7 @@ import currency from 'currency.js'
 
 export default class BookingsController {
   public async index ({response}:HttpContextContract) {
-    const booking = await Booking.query().preload('route').preload('client')
+    const booking = await Booking.query().preload('route').preload('customer')
 
     const resource = BookingResource.collection(booking)
 

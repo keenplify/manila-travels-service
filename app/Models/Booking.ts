@@ -14,7 +14,7 @@ export default class Booking extends Model {
   public customerId: string
 
   @belongsTo(() => Customer)
-  public client: BelongsTo<typeof Customer>
+  public customer: BelongsTo<typeof Customer>
 
   @column()
   public routeId: string
