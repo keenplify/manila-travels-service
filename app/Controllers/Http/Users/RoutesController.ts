@@ -1,7 +1,6 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Route from 'App/Models/Route'
 import { RouteResource } from 'App/Resources/RouteResource'
-import StoreValidator from 'App/Validators/Users/Bookings/StoreValidator'
 
 export default class RoutesControllerController {
   public async index ({ response }: HttpContextContract) {
