@@ -6,6 +6,7 @@ import { DateTime } from 'luxon'
 import { currencyColumn } from 'App/Core/Decorators/Currency'
 import Currency from 'currency.js'
 import User from 'App/Models/User'
+import { booleanColumn } from 'App/Core/Decorators/Boolean'
 
 export default class Booking extends Model {
   @column()
@@ -43,5 +44,8 @@ export default class Booking extends Model {
 
   @belongsTo(() => User)
   public user: BelongsTo<typeof User>
+
+  @booleanColumn()
+  public isPaid: boolean
 }
 

@@ -20,6 +20,7 @@ export class BookingResource extends BaseResource {
       referenceNo: model.referenceNo,
       userId: model.userId,
       user: model.user ? UserResource.make(model.user) : undefined,
+      isPaid: model.isPaid,
     }
   }
 }
