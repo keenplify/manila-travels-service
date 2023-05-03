@@ -5,7 +5,7 @@ export default class StoreValidator {
   constructor (protected ctx: HttpContextContract) {}
 
   public schema = schema.create({
-    passengerId: schema.string(),
+    passengerId: schema.number(),
     routeId: schema.string(),
     customerRoute: schema.string(),
     bookedAmount: schema.number(),
