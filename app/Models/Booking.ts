@@ -5,6 +5,7 @@ import Route from 'App/Models/Route'
 import { DateTime } from 'luxon'
 import { currencyColumn } from 'App/Core/Decorators/Currency'
 import Currency from 'currency.js'
+import User from 'App/Models/User'
 
 export default class Booking extends Model {
   @column()
@@ -36,5 +37,11 @@ export default class Booking extends Model {
 
   @column.dateTime()
   public bookingCreated: DateTime
+
+  @column()
+  public userId: string | null
+
+  @belongsTo(() => User)
+  public user: BelongsTo<typeof User>
 }
 

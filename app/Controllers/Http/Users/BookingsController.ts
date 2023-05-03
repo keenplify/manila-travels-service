@@ -1,12 +1,19 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Booking from 'App/Models/Booking'
+import User from 'App/Models/User'
 import { BookingResource } from 'App/Resources/BookingResource'
 import StoreValidator from 'App/Validators/Users/Bookings/StoreValidator'
 import currency from 'currency.js'
 
 export default class BookingsController {
-  public async index ({response}:HttpContextContract) {
-    const booking = await Booking.query().preload('route').preload('customer')
+  public async index ({response, auth}:HttpContextContract) {
+    const query = Booking.query().preload('route').preload('customer')
+
+    if (auth.user instanceof User) {
+      query.where('user_id', auth.user.id)
+    }
+
+    const booking = await query
 
     const resource = BookingResource.collection(booking)
 
