@@ -3,6 +3,7 @@ import { BaseResource } from 'App/Core/Resources/BaseResource'
 import Booking from 'App/Models/Booking'
 import { CustomerResource } from 'App/Resources/CustomerResource'
 import { RouteResource } from 'App/Resources/RouteResource'
+import { UserResource } from 'App/Resources/UserResource'
 
 export class BookingResource extends BaseResource {
   public toObject (model: Booking): ModelObject {
@@ -17,6 +18,8 @@ export class BookingResource extends BaseResource {
       bookedAmount: model.bookedAmount.value,
       bookedSeat: model.bookedSeat,
       referenceNo: model.referenceNo,
+      userId: model.userId,
+      user: model.user ? UserResource.make(model.user) : undefined,
     }
   }
 }
