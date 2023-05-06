@@ -17,6 +17,7 @@ export class BookingResource extends BaseResource {
       customerRoute: model.customerRoute,
       bookedAmount: model.bookedAmount.value,
       bookedSeat: model.bookedSeat,
+      created: model.bookingCreated,
       referenceNo: model.referenceNo,
       userId: model.userId,
       user: model.user ? UserResource.make(model.user) : undefined,
