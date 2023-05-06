@@ -41,7 +41,7 @@ export default class Booking extends Model {
   public bookingCreated: DateTime
 
   @column()
-  public userId: string | null
+  public userId: number | null
 
   @belongsTo(() => User)
   public user: BelongsTo<typeof User>

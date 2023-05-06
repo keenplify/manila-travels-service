@@ -22,7 +22,9 @@ export default class BookingsController {
     return response.resource(resource)
   }
 
-  public async store ({ request, response }: HttpContextContract) {
+  public async store ({ request, response, auth }: HttpContextContract) {
+    const user = auth.user!
+
     const {bookedAmount, passengerId, ...data} = await request.validate(StoreValidator)
 
     const passenger = await Passenger.findOrFail(passengerId)
@@ -37,6 +39,7 @@ export default class BookingsController {
       ...data,
       bookedAmount: currency(bookedAmount),
       customerId: customer.customerId,
+      userId: user.id,
     })
 
     customer.bookingId = booking.bookingId
