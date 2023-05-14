@@ -17,5 +17,10 @@
 | import './routes/customer'
 |
 */
+import Route from '@ioc:Adonis/Core/Route'
 
 import './v1/users'
+
+Route.get('/', () => {
+  return 'hello world'
+})
