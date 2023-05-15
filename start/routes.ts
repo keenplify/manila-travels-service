@@ -21,6 +21,17 @@ import Route from '@ioc:Adonis/Core/Route'
 
 import './v1/users'
 
-Route.get('/', () => {
-  return 'hello world'
+Route.get('/', ({ response }) => {
+  const check = {
+    uptime: process.uptime(),
+    message: 'OK',
+    timestamp: Date.now(),
+  }
+
+  try {
+    response.status(200).send(check)
+  } catch (error) {
+    check.message = error
+    response.status(53).send('')
+  }
 })
